@@ -1,7 +1,8 @@
 import { View, Text, Pressable, StyleSheet, Platform } from "react-native";
 import React from "react";
+import MealsOvervieawScreen from "../screens/MealsOvervieawScreen";
 
-const CategoryGridTile = ({ title, color }) => {
+const CategoryGridTile = ({ title, color,onPress }) => {
   return (
     <View style={styles.gridItem}>
       <Pressable
@@ -10,6 +11,7 @@ const CategoryGridTile = ({ title, color }) => {
           styles.button,
           pressed ? styles.buttonPressed : null,
         ]}
+        onPress={onPress}
       >
         <View style={[styles.innerContainer, { backgroundColor: color }]}>
           <Text style={styles.title}> {title} </Text>
