@@ -11,7 +11,14 @@ const MealsOvervieawScreen = ({ route }) => {
   });
 
   function renderMealItem(itemData) {
-    return <MeallItem title={itemData.item.title} />;
+    const meailItemProps = {
+      title: itemData.item.title,
+      imageUrl: itemData.item.imageUrl,
+      duration: itemData.item.duration,
+      complexity: itemData.item.complexity,
+      affordability: itemData.item.affordability,
+    };
+    return <MeallItem {...meailItemProps} />;
   }
   return (
     <View style={styles.constainer}>
