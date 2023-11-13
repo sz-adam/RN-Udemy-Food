@@ -1,8 +1,7 @@
 import { View, Text, Pressable, StyleSheet, Platform } from "react-native";
 import React from "react";
-import MealsOvervieawScreen from "../screens/MealsOvervieawScreen";
 
-const CategoryGridTile = ({ title, color,onPress }) => {
+const CategoryGridTile = ({ title, color, onPress }) => {
   return (
     <View style={styles.gridItem}>
       <Pressable
