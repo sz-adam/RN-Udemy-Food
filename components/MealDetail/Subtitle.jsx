@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
       subtitleContainer: {
         margin: 6,
         padding: 6,
-        marginHorizontal: 24,
+        marginHorizontal: 12,
         marginVertical: 6,
         textAlign: 'center',
         borderBottomColor: '#e2b497',

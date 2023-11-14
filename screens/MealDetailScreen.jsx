@@ -21,14 +21,16 @@ const MealDetailScreen = ({ route }) => {
         affordability={selectedMeal.affordability}
         textStyle={styles.detailText}
       />
+      <View style={styles.listOuterContainer}>
+        <View style={styles.listContainer}>
+          <Subtitle>Ingredients</Subtitle>
+          <List data={selectedMeal.ingredients} />
 
-      <View>
-        <Subtitle>Ingredients</Subtitle>
-        <List data={selectedMeal.ingredients} />
-
-        <Subtitle>Steps</Subtitle>
-        <List data={selectedMeal.steps} />
+          <Subtitle>Steps</Subtitle>
+          <List data={selectedMeal.steps} />
+        </View>
       </View>
+
 
     </View>
   )
@@ -51,5 +53,11 @@ const styles = StyleSheet.create({
   detailText: {
     color: 'white'
   },
+  listOuterContainer: {
+    alignItems:'center'
+  },
+  listContainer: {
+    width: '80%'
+  }
 
 })
