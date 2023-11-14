@@ -47,10 +47,10 @@ const MeallItem = ({
         </View>
       </Pressable>
     </View>
-  );
-};
+  )
+}
 
-export default MeallItem;
+export default MeallItem
 
 const styles = StyleSheet.create({
   mealItem: {
