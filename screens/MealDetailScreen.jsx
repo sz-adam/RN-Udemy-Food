@@ -17,7 +17,7 @@ const MealDetailScreen = ({ route }) => {
         duration={selectedMeal.duration} 
         complexity={selectedMeal.complexity} 
         affordability={selectedMeal.affordability}
-   
+        textStyle={styles.detailText}
         />
       
       <Text>Ingredients</Text>
@@ -42,5 +42,7 @@ const styles = StyleSheet.create({
     textAlign:'center',
     color:'white',
   },
- 
+  detailText:{
+    color:'white'
+  },
 })
