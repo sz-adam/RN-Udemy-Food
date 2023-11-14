@@ -3,6 +3,7 @@ import React from 'react'
 import { MEALS } from '../data/dummy-data'
 import MealDetails from '../components/MealDetails'
 import Subtitle from '../components/MealDetail/Subtitle'
+import List from '../components/MealDetail/List'
 
 const MealDetailScreen = ({ route }) => {
   const mealId = route.params.mealId
@@ -20,11 +21,15 @@ const MealDetailScreen = ({ route }) => {
         affordability={selectedMeal.affordability}
         textStyle={styles.detailText}
       />
-      <Subtitle>Ingredients</Subtitle>
-      {selectedMeal.ingredients.map((ingredient) => <Text key={ingredient}>{ingredient}</Text>)}
 
-      <Subtitle>Steps</Subtitle>
-      {selectedMeal.steps.map((step) => <Text key={step}>{step}</Text>)}
+      <View>
+        <Subtitle>Ingredients</Subtitle>
+        <List data={selectedMeal.ingredients} />
+
+        <Subtitle>Steps</Subtitle>
+        <List data={selectedMeal.steps} />
+      </View>
+
     </View>
   )
 }
