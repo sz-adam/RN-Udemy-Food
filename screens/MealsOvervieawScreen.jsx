@@ -12,7 +12,7 @@ const MealsOvervieawScreen = ({ route, navigation }) => {
 
   useLayoutEffect(() => {
     const categoryTitle = CATEGORIES.find((category) => category.id === catId).title
-    
+
     navigation.setOptions({
       title: categoryTitle
     })
@@ -20,6 +20,7 @@ const MealsOvervieawScreen = ({ route, navigation }) => {
 
   function renderMealItem(itemData) {
     const meailItemProps = {
+      id:itemData.item.id,
       title: itemData.item.title,
       imageUrl: itemData.item.imageUrl,
       duration: itemData.item.duration,
