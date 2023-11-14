@@ -2,14 +2,16 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
 const MealDetails = ({
-     duration,
+    duration,
     complexity,
-    affordability, }) => {
+    affordability,
+    style,
+     textStyle }) => {
     return (
-        <View style={styles.details}>
-            <Text style={styles.detailItem}>{duration}</Text>
-            <Text style={styles.detailItem}>{complexity.toUpperCase()}</Text>
-            <Text style={styles.detailItem}>{affordability.toUpperCase()}</Text>
+        <View style={[styles.details, style]}>
+            <Text style={[styles.detailItem,textStyle]}>{duration}</Text>
+            <Text style={[styles.detailItem,textStyle]}>{complexity.toUpperCase()}</Text>
+            <Text style={[styles.detailItem,textStyle]}>{affordability.toUpperCase()}</Text>
         </View>
     )
 }
