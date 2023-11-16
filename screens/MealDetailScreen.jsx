@@ -1,28 +1,40 @@
-import { StyleSheet, Text, View, Image,ScrollView, Button } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, Image, ScrollView, Button } from 'react-native'
+import React, { useContext } from 'react'
 import { MEALS } from '../data/dummy-data'
 import MealDetails from '../components/MealDetails'
 import Subtitle from '../components/MealDetail/Subtitle'
 import List from '../components/MealDetail/List'
 import { useLayoutEffect } from 'react'
 import IconsButton from '../components/IconsButton'
+import { FavoritesContext } from '../store/context/Favorites-context'
 
-const MealDetailScreen = ({ route,navigation }) => {
+const MealDetailScreen = ({ route, navigation }) => {
+
+  const favoriteMealsCtx = useContext(FavoritesContext)
   const mealId = route.params.mealId
 
   const selectedMeal = MEALS.find((meal) => meal.id === mealId)
 
-  function headerButtonPressHandler(){
+  const mealIsFavorite = favoriteMealsCtx.ids.includes(mealId)
 
+  function changeFavoriteStatusHandler() {
+    if (mealIsFavorite) {
+      favoriteMealsCtx.removeFavorite(mealId)
+    } else {
+      favoriteMealsCtx.addFavorite(mealId)
+    }
   }
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      headerRight:() =>{
-        return <IconsButton icon='star' color='white' onPress={headerButtonPressHandler}/>
+      headerRight: () => {
+        return <IconsButton
+          icon={mealIsFavorite ? 'star' : 'star-outline'}
+          color='white'
+          onPress={changeFavoriteStatusHandler} />
       }
     })
-  },[navigation,headerButtonPressHandler])
+  }, [navigation, changeFavoriteStatusHandler])
 
   return (
     <ScrollView style={styles.rootContainer}>
@@ -53,9 +65,9 @@ const MealDetailScreen = ({ route,navigation }) => {
 export default MealDetailScreen
 
 const styles = StyleSheet.create({
-  rootContainer:{
- marginBottom:32
-  },  
+  rootContainer: {
+    marginBottom: 32
+  },
   image: {
     width: '100%',
     height: 350,
@@ -71,7 +83,7 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   listOuterContainer: {
-    alignItems:'center'
+    alignItems: 'center'
   },
   listContainer: {
     width: '80%'
